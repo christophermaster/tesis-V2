@@ -120,10 +120,6 @@ $("#matter").change(function(event) {
 $("#topic").change(function(event) {
     $.get("/content/" + event.target.value + "", function(response, faculty) {
         $("#content").empty();
-        $('#content').append($('<option>', {
-            value: "",
-            text: 'Seleccione'
-        }));
         for (i = 0; i < response.length; i++) {
             $('#content').append($('<option>', {
                 value: response[i].id,

@@ -29,6 +29,8 @@ Route::get('gestion/contenido', function () {
 
 /* Ejercicios */
 
+Route::resource('gestion/contenido/ejercicio','ExerciseController');
+
 Route::get('gestion/contenido/crear/ejercicio', function () {
     return view('management/exercise/create');
 });
@@ -54,3 +56,8 @@ Route::get('gestion/contenido/mis/publicaciones', function () {
 Route::get('gestion/contenido/favoritos', function () {
     return view('favorite/index');
 });
+
+/**
+ * select
+ */
+Route::get('/content/{id}','SelectController@getContent');

@@ -166,7 +166,7 @@
 													</a>
 												</li>
 												<li class="">
-													<a href="{{url('gestion/contenido/crear/ejercicio')}}" class="waves-effect waves-dark">
+													<a href="{{url('gestion/contenido/ejercicio/create')}}" class="waves-effect waves-dark">
 														<span class="pcoded-mtext">Crear</span>
 													</a>
 												</li>
@@ -339,6 +339,7 @@
 	<script>
 	$('div.alert').not('.alert-important').delay(3000).fadeOut(350);
 	</script>
+	<script src="{{asset('js/dropdown.js')}}"></script>
         
 </body>
 @stack('scripts')
