@@ -1,0 +1,1 @@
+{"result":{"text":"large union from i equals 1 to 7 of A subscript i"},"status":"ok"}

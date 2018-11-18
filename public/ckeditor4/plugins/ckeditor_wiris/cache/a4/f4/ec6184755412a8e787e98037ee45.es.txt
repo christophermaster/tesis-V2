@@ -1,0 +1,1 @@
+{"result":{"text":"raíz con índice g g g y radical g g fin raíz subíndice blanco"},"status":"ok"}

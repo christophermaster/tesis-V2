@@ -1,0 +1,1 @@
+{"result":{"text":"raíz m-ésima de blanco h"},"status":"ok"}

@@ -1,0 +1,57 @@
+/*Estilos para el scroll del los cards de los ejercicios*/
+
+.scroll {
+    overflow: auto;
+    height: 250px;
+}
+
+.scroll::-webkit-scrollbar {
+    width: 4px;
+}
+
+.scroll::-webkit-scrollbar-track {
+    border-radius: 10px;
+}
+
+.scroll::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+}
+
+.buscador {
+    text-align: -webkit-right !important;
+}
+
+
+/*margenes para los iconos de las tabs que se encuentra en favoritos */
+
+.margin-icon {
+    margin-right: 15px;
+}
+
+
+/*boton cuando el usuario ya esta logueado*/
+
+.button-logout {
+    text-align: -webkit-right;
+}
+
+.a-button-trans,
+.a-button-trans:hover {
+    background: #0000ff00;
+    border: 0px;
+}
+
+.btn-secondary:not([disabled]):not(.disabled).active,
+.btn-secondary:not([disabled]):not(.disabled):active,
+.show>.btn-secondary.dropdown-toggle {
+    color: #fff;
+    background-color: #0000ff00;
+    border: 0px
+}
+
+.btn-secondary:not([disabled]):not(.disabled).active:focus,
+.btn-secondary:not([disabled]):not(.disabled):active:focus,
+.show>.btn-secondary.dropdown-toggle:focus {
+    box-shadow: 0 0 0 0.2rem rgba(134, 142, 150, 0);
+}

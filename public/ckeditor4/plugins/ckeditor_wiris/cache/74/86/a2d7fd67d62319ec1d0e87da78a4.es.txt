@@ -1,0 +1,1 @@
+{"result":{"text":"fracción v entre v"},"status":"ok"}

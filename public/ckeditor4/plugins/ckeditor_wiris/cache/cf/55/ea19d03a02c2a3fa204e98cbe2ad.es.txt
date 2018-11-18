@@ -1,0 +1,1 @@
+{"result":{"text":"raíz x-ésima de x"},"status":"ok"}

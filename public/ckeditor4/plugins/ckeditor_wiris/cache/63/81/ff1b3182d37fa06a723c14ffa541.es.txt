@@ -1,0 +1,1 @@
+{"result":{"text":"raíz con índice blanco y radical abrir barra vertical abrir llaves raíz cuadrada de raíz con índice blanco y radical fracción numerador raíz cuadrada de raíz con índice blanco y radical g fin raíz entre denominador g fin fracción fin raíz fin raíz cerrar llaves cerrar barra vertical fin raíz"},"status":"ok"}

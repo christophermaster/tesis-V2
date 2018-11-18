@@ -1,0 +1,1 @@
+{"result":{"text":"inclinada fracción f entre blanco f"},"status":"ok"}

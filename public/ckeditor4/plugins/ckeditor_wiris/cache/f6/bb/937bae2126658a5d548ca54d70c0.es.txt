@@ -1,0 +1,1 @@
+{"result":{"text":"intersección d f"},"status":"ok"}

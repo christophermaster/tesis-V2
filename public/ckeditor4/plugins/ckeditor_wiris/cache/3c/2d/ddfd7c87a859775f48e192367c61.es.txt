@@ -1,0 +1,1 @@
+{"result":{"text":"raíz con índice x c y radical c"},"status":"ok"}

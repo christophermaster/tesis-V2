@@ -1,0 +1,1 @@
+{"result":{"text":"abrir barra vertical paréntesis izquierdo x paréntesis derecho cerrar barra vertical"},"status":"ok"}

@@ -1,0 +1,1 @@
+{"result":{"text":"abrir barra vertical c cerrar barra vertical"},"status":"ok"}

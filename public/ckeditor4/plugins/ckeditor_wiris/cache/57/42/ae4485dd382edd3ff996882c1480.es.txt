@@ -1,0 +1,1 @@
+{"result":{"text":"grande unión desde i igual 1 hasta 7 de A subíndice i"},"status":"ok"}
