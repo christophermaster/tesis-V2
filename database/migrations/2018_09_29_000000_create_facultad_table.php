@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePasswordResetsTable extends Migration
+class CreateFacultadTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,12 @@ class CreatePasswordResetsTable extends Migration
      */
     public function up()
     {
-        Schema::create('password_resets', function (Blueprint $table) {
-            $table->string('email')->index();
-            $table->string('token');
+        Schema::create('faculties', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('nombre');
+            $table->string('descripcion'); //nombre de la Escuela de la universidad de carabobo
+            $table->string('usuario_creador');
+            $table->string('usuario_modificador');
             $table->date('created_at')->nullable();
             $table->date('updated_at')->nullable();
         });
@@ -28,6 +31,6 @@ class CreatePasswordResetsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('password_resets');
+        Schema::dropIfExists('faculties');
     }
 }
