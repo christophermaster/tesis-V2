@@ -5,7 +5,7 @@ namespace Gestion\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input;
-use gestion\Http\Requests\ExerciseRequest;
+use Gestion\Http\Requests\ExerciseRequest;
 use Gestion\models\Faculty;
 use Gestion\models\People;
 use Gestion\models\Teacher;
@@ -23,7 +23,7 @@ use Illuminate\Auth\Middleware\Authenticate;
 use Laracasts\Flash\Flash;
 use Illuminate\Support\Facades\Auth;
 use DB;
-use gestion\User;
+use Gestion\User;
 
 class ExerciseController extends Controller
 {
@@ -37,9 +37,25 @@ class ExerciseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        if($request){
+
+            //obtengo el usuario 
+            $usuario = Auth::user();
+            //obtengo los ejercicios 
+            $query=trim($request->get('searchText'));
+            $ejercicio=DB::table('exercises as ex')
+                ->select('ex.*')
+                //->where('ex.id_usuario','=', $usuario->id)
+                ->where('ex.contenido','LIKE','%'.$query.'%')
+                ->orwhere('ex.tema','LIKE','%'.$query.'%')
+                ->orderBy('ex.id','desc')
+                ->paginate(2);
+           
+            return view("management.exercise.index",["ejercicio"=>$ejercicio,
+            "usuario"=>$usuario,"searchText"=>$query]);
+        }
     }
 
     /**
@@ -73,14 +89,91 @@ class ExerciseController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Funcion que se encarga de guardar los ejercicios .
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+       
+        if(Auth::check()){
+
+            try {
+                DB::beginTransaction();
+                //obtengo el usuario logueado 
+                 
+                $usuario = Auth::user();
+                
+                //obtengo la fecha de hopy 
+                $hoy = date("Y-m-d H:i:s");
+                //obtengo el nombre da tema,facultad,escuela ,catedra,etc..
+                $tema = Topic::findOrfail($request->get('tema'));
+                $contenido = Content::findOrfail($request->get('contenido'));
+                $dificultad = Difficulty::findOrfail($request->get('dificultad'));
+                $tipo = TypeExercise::findOrfail($request->get('tipo'));
+               
+                //instanceo el modelo y le asiganos sus valores para guardarl0
+                $exercise = new Exercise;
+                //detalles id
+                $exercise->id_tema = $request->get('tema');
+                $exercise->id_contenido = $request->get('contenido');
+                $exercise->id_dificultad = $request->get('dificultad');
+                $exercise->id_tipo = $request->get('tipo');
+                // detalles nombre
+                $exercise->tema = $tema->nombre;
+                $exercise->nombre_contenido = $contenido->nombre;
+                $exercise->tipo_nombre = $tipo->nombre ;
+                $exercise->dificultad = $dificultad->nombre;
+
+                // descripcion del ejercicio 
+                $exercise->contenido = $request->get('descripcion');
+              
+                // usuario creador y modificador
+                $exercise->id_usuario = $usuario->id;
+                $exercise->usuario_creador=$usuario->name;
+                $exercise->usuario_modificador= $usuario->name;
+                
+                // fecha de creacion y modificacion 
+                $exercise->created_at = $hoy;
+                $exercise->updated_at = $hoy;
+
+                // datos adicionakles 
+                $exercise->usado = 0;
+                $exercise->aprobado = 1;
+
+                // guardo 
+                $exercise->save();
+                
+
+                flash('Se guardo de forma Correcta')->success();
+        
+                $faculty=DB::table('faculties as f')
+                ->select('f.id','f.nombre')
+                ->get();
+                $dificultad=DB::table('difficulties as d')
+                ->select('d.id','d.nombre')
+                ->get();
+                $tipo_ejercicio=DB::table('typeexercises as te')
+                ->select('te.id','te.nombre')
+                ->get();
+                $ejercicio = Exercise::findOrfail($exercise->id);
+                $solucion  = DB::table('solutions as sol')
+                    ->select('sol.*')
+                    ->where('sol.id_ejercicio','=',$exercise->id)->get();
+
+                DB::commit();
+            } catch (Exception $e){
+
+                flash('Error al Guardar ejercicio')->error();
+                DB::rollback();
+            }
+
+           // return Redirect::to('gestion/contenido/mis/publicaciones/ejercicios/detalles/'.$exercise->id);
+           return Redirect::to('gestion/contenido/ejercicio/create');
+        }else{
+           return Redirect::to('/');
+        }
     }
 
     /**
@@ -91,7 +184,7 @@ class ExerciseController extends Controller
      */
     public function show($id)
     {
-        //
+        return Redirect::to('/');
     }
 
     /**

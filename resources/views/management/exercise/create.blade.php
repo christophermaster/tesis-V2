@@ -46,65 +46,67 @@
         </div>
     </div>
 
-    <!--Destalles-->
+    {!!Form::open(array('url'=>'gestion/contenido/ejercicio','method'=>'POST','autocomplete'=>'off'))!!}
+    {{Form::token()}}
+        <!--Destalles-->
         <div class="col-xl-12 col-md-12">
-        <div class="card latest-update-card">
-            <div class="card-header">
-                 <h5 class="card-title">Detalles</h5>
-                <div class="card-header-right">
-                    <ul class="list-unstyled card-option">
-                        <li class="first-opt"><i class="feather icon-chevron-left open-card-option"></i></li>
-                        <li><i class="feather icon-maximize full-card"></i></li>
-                        <li><i class="feather icon-minus minimize-card"></i></li>
-                        <li><i class="feather icon-chevron-left open-card-option"></i></li>
-                    </ul>
+            <div class="card latest-update-card">
+                <div class="card-header">
+                    <h5 class="card-title">Detalles</h5>
+                    <div class="card-header-right">
+                        <ul class="list-unstyled card-option">
+                            <li class="first-opt"><i class="feather icon-chevron-left open-card-option"></i></li>
+                            <li><i class="feather icon-maximize full-card"></i></li>
+                            <li><i class="feather icon-minus minimize-card"></i></li>
+                            <li><i class="feather icon-chevron-left open-card-option"></i></li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-            <div class="card-block">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="row miform">
-                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                            <label for="exampleFormControlSelect2" class="milabel">Tema</label>
-                            <select id="topic" name="tema" class="form-control miInput" 
-                            data-style="select-with-transition" title="Tema" data-size="7" required>                                            
-                                @foreach($tema as $tema)
-                                <option value="{{$tema->id}}">{{$tema->nombre}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                            <label for="exampleFormControlSelect2" class="milabel">Contenido</label>
-                            <select id="content" name="contenido" class="form-control miInput" 
-                            data-style="select-with-transition" title="Escuela" data-size="7" required>
-                                @foreach($contenido as $contenido)
-                                <option value="{{$contenido->id}}">{{$contenido->nombre}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                            <label for="exampleFormControlSelect2" class="milabel">Tipo Ejercicio</label>
-                            <select id="tipo" name="tipo" class="form-control miInput" 
-                            data-style="select-with-transition" title="Escuela" data-size="7" required>
-                                @foreach($tipo as $tipo)
-                                <option value="{{$tipo->id}}">{{$tipo->nombre}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                            <label for="exampleFormControlSelect2" class="milabel">Dificultad</label>
-                            <select id="dificultad" name="id_dificultad"  data-style="select-with-transition" 
-                            class="form-control miInput" data-style="select-with-transition" title="Escuela" 
-                            data-size="7" required>
-                                @foreach($dificultad as $dificultad)
-                                <option value="{{$dificultad->id}}">{{$dificultad->nombre}}</option>
-                                @endforeach
-                            </select>
+                <div class="card-block">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="row miform">
+                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                                <label for="exampleFormControlSelect2" class="milabel">Tema</label>
+                                <select id="topic" name="tema" class="form-control miInput" 
+                                data-style="select-with-transition" title="Tema" data-size="7" required>                                            
+                                    @foreach($tema as $tema)
+                                    <option value="{{$tema->id}}">{{$tema->nombre}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                                <label for="exampleFormControlSelect2" class="milabel">Contenido</label>
+                                <select id="content" name="contenido" class="form-control miInput" 
+                                data-style="select-with-transition" title="Escuela" data-size="7" required>
+                                    @foreach($contenido as $contenido)
+                                    <option value="{{$contenido->id}}">{{$contenido->nombre}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                                <label for="exampleFormControlSelect2" class="milabel">Tipo Ejercicio</label>
+                                <select id="tipo" name="tipo" class="form-control miInput" 
+                                data-style="select-with-transition" title="Escuela" data-size="7" required>
+                                    @foreach($tipo as $tipo)
+                                    <option value="{{$tipo->id}}">{{$tipo->nombre}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                                <label for="exampleFormControlSelect2" class="milabel">Dificultad</label>
+                                <select id="dificultad" name="dificultad"  data-style="select-with-transition" 
+                                class="form-control miInput" data-style="select-with-transition" title="Escuela" 
+                                data-size="7" required>
+                                    @foreach($dificultad as $dificultad)
+                                    <option value="{{$dificultad->id}}">{{$dificultad->nombre}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
     <br>
     <!--CkEditor-->                                         
@@ -124,21 +126,23 @@
             </div>
             <div class="card-block">
                 <div class="form-group">
-                    <textarea name="contenido" id="example" requerid value="{{old('contenido')}}" class="wrs_div_box" contenteditable="true" tabindex="0" spellcheck="true" role="textbox" 
+                    <textarea name="descripcion" id="example" requerid value="{{old('descripcion')}}" class="wrs_div_box" contenteditable="true" tabindex="0" spellcheck="true" role="textbox" 
                     aria-label="Rich Text Editor, example" title="Rich Text Editor, example" required>
                     </textarea>
                 </div>
                 <div class="row">
                     <div class="col-md-12 text-center">
                         <button class="btn btn-primary" type="submit">Guardar</button>
-                        <button class="btn btn-danger" type="reset">Cancelar</button>
+                        <a href="{{ URL::previous()}}">
+                            <button class="btn btn-danger">Cancelar</button>
+                        </a>
                     <!-- <button class="btn btn-primary" type="submit">Guardar y Agregar Solucion </button>-->
                     </div>
                 </div>   
             </div>
         </div>
     </div>
-
+    {!!Form::close()!!}
     <!--Wirelis-->
     <div class="row">
 

@@ -161,7 +161,7 @@
 											</a>
 											<ul class="pcoded-submenu">
 												<li class="">
-													<a href="{{url('gestion/contenido/listar/ejercicios')}}" class="waves-effect waves-dark">
+													<a href="{{url('gestion/contenido/ejercicio')}}" class="waves-effect waves-dark">
 														<span class="pcoded-mtext">Listar</span>
 													</a>
 												</li>
@@ -249,6 +249,8 @@
 											<!-- [ page content ] start -->
 											<div class="row">
 												<div class="col-sm-12">
+													<!--Mensaje-->
+													@include('flash::message')
 													<!--Contenido-->
                                                         @yield('contenido')
                                                     <!--Fin Contenido-->
@@ -340,6 +342,10 @@
 	$('div.alert').not('.alert-important').delay(3000).fadeOut(350);
 	</script>
 	<script src="{{asset('js/dropdown.js')}}"></script>
+
+	<script>
+		$('div.alert').not('.alert-important').delay(3000).fadeOut(350);
+	</script>
         
 </body>
 @stack('scripts')

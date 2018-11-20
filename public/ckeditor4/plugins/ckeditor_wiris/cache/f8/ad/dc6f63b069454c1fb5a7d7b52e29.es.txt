@@ -1,0 +1,1 @@
+{"result":{"text":"abrir barra vertical raíz cuarta de x más 5 fin raíz cerrar barra vertical"},"status":"ok"}
