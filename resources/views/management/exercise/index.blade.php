@@ -4,7 +4,7 @@
     <!-- [ breadcrumb ] start -->
     <div class="page-header card">
         <div class="row align-items-end">
-            <div class="col-lg-8">
+            <div class="col-lg-6">
                 <div class="page-header-title">
                     <i class="feather icon-list bg-c-blue"></i>
                     <div class="d-inline">
@@ -13,13 +13,18 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-6">
                 <div class="page-header-breadcrumb">
                     <ul class=" breadcrumb breadcrumb-title">
                         <li class="breadcrumb-item">
-                            <a href="index.html"><i class="feather icon-home"></i></a>
+                            <a href="{{url('gestion/contenido')}}"><i class="feather icon-home"></i></a>
                         </li>
-                        <li class="breadcrumb-item"><a href="#!">listado Ejercicio</a> </li>
+                        @if($ubication == "Home")
+                        <li class="breadcrumb-item"><a href="#!">listado de Ejercicios</a> </li>
+                        @elseif($ubication == "Publication")
+                        <li class="breadcrumb-item"><a href="{{url('gestion/contenido/mis/publicaciones/ejercicios')}}">Mis Publicaciones</a> </li>
+                        <li class="breadcrumb-item"><a href="#!">listado de Ejercicios</a> </li>
+                        @endif
                     </ul>
                 </div>
             </div>
@@ -51,10 +56,18 @@
                     <div class="card-header-right">
                         <ul class="list-unstyled card-option">
                             <li class="first-opt"><i class="feather icon-chevron-left open-card-option"></i></li>
-                            <li><i class="feather icon-eye"></i></li>
-                            <li><i class="icon-pencil"></i></li>
+                            <li><a href ="{{URL::action('ExerciseController@show', $ejer->id)}}"><i class="feather icon-eye"></i></a></li>
+                            <li><a href ="{{URL::action('ExerciseController@edit', $ejer->id)}}"><i class="icon-pencil"></i></a></li>
                             <li><a href="#" data-toggle="modal" data-target="#modal-delete-{{$ejer->id}}" rel="tooltip" title="Eliminar"><i class="feather icon-trash"></i></a></li>
-                            <li><i class="feather icon-heart"></i></li>
+                            <li>
+                            <form method="post" action="/favorito/ejercicio/{{$ejer->id}}">
+                                @csrf
+                                <input type="hidden" value="{{csrf_token()}}" name="_token" />
+                                    <button class="noFavorito" type="submit" rel="tooltip" title="Agregar a favoritos">
+                                     <i class="feather icon-heart"></i>
+                                    </button>
+                            </form>
+                            </li>
                             <li><i class="feather icon-chevron-left open-card-option"></i></li>
                         </ul>
                     </div>

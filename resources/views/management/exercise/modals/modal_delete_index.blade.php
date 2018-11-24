@@ -1,6 +1,6 @@
 <div class="modal fade" aria-hidden="true"
 role="dialog" tabindex="-1" id="modal-delete-{{$ejer->id}}">
-	<form method="delete" action="/gestion/contenido/ejercicio/delete/{{$ejer->id}}" >
+{{Form::Open(array('action'=>array('ExerciseController@destroy',$ejer->id),'method'=>'delete'))}}
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -18,5 +18,5 @@ role="dialog" tabindex="-1" id="modal-delete-{{$ejer->id}}">
 				</div>
 			</div>
 		</div>
-	</form>
+	{{Form::Close()}}
 </div>

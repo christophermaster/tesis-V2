@@ -57,9 +57,50 @@
             </ul>
             <!-- Tab panes -->
             <div class="tab-content container ">
+                <!--Ejercicios -->
                 <div class="tab-pane active" id="home7" role="tabpanel">
                     <br>
-                    <p class="m-0">1. This is Photoshop's version of Lorem IpThis is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean mas Cum sociis natoque penatibus et magnis dis.....</p>
+                    @foreach($ejercicio as $ejer)
+                        <!--Listado de los ejers-->
+                        <div class="col-xl-12 col-md-12 col-lg-12 col-sm-12">
+                            <div class="card latest-update-card">
+                                <div class="card-header">
+                                    <h5 style=" display: inline;">{{$ejer->tema}}-</h5><p style=" display: inline;">{{$ejer->nombre_contenido}}</p>
+                                    <div class="card-header-right">
+                                        <ul class="list-unstyled card-option">
+                                            <li class="first-opt"><i class="feather icon-chevron-left open-card-option"></i></li>
+                                            <li><i class="feather icon-eye"></i></li>
+                                            <li><i class="icon-pencil"></i></li>
+                                            <li><a href="#" data-toggle="modal" data-target="#modal-delete-{{$ejer->id}}" rel="tooltip" title="Eliminar"><i class="feather icon-trash"></i></a></li>
+                                            <li>
+                                            <form method="post" action="/favorito/ejercicio/{{$ejer->id}}">
+                                                @csrf
+                                                <input type="hidden" value="{{csrf_token()}}" name="_token" />
+                                                    <button class="noFavorito" type="submit" rel="tooltip" title="Agregar a favoritos">
+                                                    <i class="feather icon-heart"></i>
+                                                    </button>
+                                            </form>
+                                            </li>
+                                            <li><i class="feather icon-chevron-left open-card-option"></i></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="card-block">
+                                    <div class="scroll">
+                                        <br>
+                                    <article>  <?php echo $ejer->contenido ?></article>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                       
+                        @include('management.exercise.modals.modal_delete_index')
+                    @endforeach
+                    <div class="text-center paginador">
+                        <div class="col-md-12">
+                            {{$ejercicio->render()}}
+                        </div>
+                    </div>
                 </div>
                 <div class="tab-pane" id="profile7" role="tabpanel">
                     <br>

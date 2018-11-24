@@ -32,17 +32,17 @@
             <div class="card social-card">
                 <div class="card-body text-center">
                     <h2 class="text-facebook m-b-20"><i class="icon-puzzle"></i></h2>
-                    <h3 class="text-facebook f-w-700">6,750</h3>
+                    <h3 class="text-facebook f-w-700">{{$cantEjercicio->cantidad}}</h3>
                     <p>Ejercicios</p>
-                    <a href="#!" disabled>Ver más <i class="ti-arrow-right"></i></a>
+                    <a href="{{url('gestion/contenido/mis/publicaciones/ejercicios')}}" disabled>Ver más <i class="ti-arrow-right"></i></a>
                 </div>
             </div>
         </div>
         <div class="col-xl-3 col-md-6">
             <div class="card social-card">
                 <div class="card-body text-center">
-                    <h2 class="text-twitter m-b-20"><i class="icon-graph"></i></h2>
-                    <h3 class="text-twitter f-w-700">9,752</h3>
+                    <h2 class="text-dribbble m-b-20"><i class="icon-graph"></i></h2>
+                    <h3 class="text-dribbble f-w-700">{{$cantSoluciones->cantidad}}</h3>
                     <p>Soluciones</p>
                     <a href="#!" disabled>Ver más <i class="ti-arrow-right"></i></a>
                 </div>
@@ -51,18 +51,8 @@
         <div class="col-xl-3 col-md-6">
             <div class="card social-card">
                 <div class="card-body text-center">
-                    <h2 class="text-dribbble m-b-20"><i class="ti-heart"></i></h2>
-                    <h3 class="text-dribbble f-w-700">8,752</h3>
-                    <p>Favoritos</p>
-                    <a href="#!" disabled>Ver más <i class="ti-arrow-right"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-3 col-md-6">
-            <div class="card social-card">
-                <div class="card-body text-center">
                     <h2 class="text-linkedin m-b-20"><i class="ti-cloud-up"></i></h2>
-                    <h3 class="text-linkedin f-w-700">952</h3>
+                    <h3 class="text-linkedin f-w-700">{{$cantUpdate->cantidad}}</h3>
                     <p>Archivos Subidos</p>
                     <a href="#!" disabled>Ver más <i class="ti-arrow-right"></i></a>
                 </div>
@@ -72,7 +62,7 @@
             <div class="card social-card">
                 <div class="card-body text-center">
                     <h2 class="text-linkedin m-b-20"><i class="ti-write"></i></h2>
-                    <h3 class="text-linkedin f-w-700">952</h3>
+                    <h3 class="text-linkedin f-w-700">{{$cantTemporaryEvaluations->cantidad}}</h3>
                     <p>Evaluaciones</p>
                     <a href="#!" disabled>Ver más <i class="ti-arrow-right"></i></a>
                 </div>

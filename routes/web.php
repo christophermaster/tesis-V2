@@ -48,14 +48,14 @@ Route::get('gestion/contenido/ejercicio/detalles', function () {
 });
 
 /**Publicaciones */
-Route::get('gestion/contenido/mis/publicaciones', function () {
-    return view('publication/index');
-});
+Route::get('gestion/contenido/mis/publicaciones','PublicationController@index');
+
+Route::get('gestion/contenido/mis/publicaciones/ejercicios', 'PublicationController@myExercise');
 
 /**Favoritos*/
-Route::get('gestion/contenido/favoritos', function () {
-    return view('favorite/index');
-});
+Route::get('gestion/contenido/favoritos','FavoriteController@index');
+Route::post('favorito/ejercicio/{id}', ['as' => 'favoritoEjercicio', 'uses' => 'FavoriteController@agregarFavoriteEjercicio']);
+
 
 /**
  * select

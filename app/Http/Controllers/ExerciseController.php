@@ -41,6 +41,7 @@ class ExerciseController extends Controller
     {
         if($request){
 
+            $ubication ="Home";
             //obtengo el usuario 
             $usuario = Auth::user();
             //obtengo los ejercicios 
@@ -54,7 +55,7 @@ class ExerciseController extends Controller
                 ->paginate(2);
            
             return view("management.exercise.index",["ejercicio"=>$ejercicio,
-            "usuario"=>$usuario,"searchText"=>$query]);
+            "usuario"=>$usuario,"searchText"=>$query,"ubication"=>$ubication]);
         }
     }
 
@@ -184,6 +185,11 @@ class ExerciseController extends Controller
      */
     public function show($id)
     {
+        $ejercicio = Exercise::findOrfail($id);
+        $solucion  = DB::table('solutions as sol')
+                    ->select('sol.*')
+                    ->where('sol.id_ejercicio','=', $id)->get();
+        return view("management.exercise.show",["ejer"=>$ejercicio,"solucion"=>$solucion]);
         return Redirect::to('/');
     }
 
@@ -195,7 +201,26 @@ class ExerciseController extends Controller
      */
     public function edit($id)
     {
-        //
+        $ejercicio = Exercise::findOrfail($id);
+
+        $tema=DB::table('topics as t')
+        ->select('t.*')
+        ->get();
+        $contenido=DB::table('contents as t')
+        ->select('t.*')
+        ->get();
+        $dificultad=DB::table('difficulties as d')
+        ->select('d.id','d.nombre')
+        ->get();
+        $tipo=DB::table('typeexercises as te')
+        ->select('te.id','te.nombre')
+        ->get();
+
+        
+
+        return view("management.exercise.edit",[ "dificultad"=>$dificultad,
+        "tipo"=>$tipo,"tema"=>$tema, "contenido"=>$contenido,
+        "ejercicio"=>$ejercicio]);
     }
 
     /**
@@ -207,7 +232,54 @@ class ExerciseController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if(Auth::check()){
+
+            try {
+
+                DB::beginTransaction();
+                //obtengo el nombre del usuario
+                $usuario = Auth::user();
+                //obtengo el id del usuario
+                $exercise = Exercise::findOrfail($id);
+                //obtengo la fecha de hopy 
+                $hoy = date("Y-m-d H:i:s");
+                //obtengo el nombre da tema,facultad,escuela ,catedra,etc..
+                $tema = Topic::findOrfail($request->get('tema'));
+                $contenido = Content::findOrfail($request->get('contenido'));
+                $dificultad = Difficulty::findOrfail($request->get('dificultad'));
+                $tipo = TypeExercise::findOrfail($request->get('tipo'));
+            
+                $exercise->contenido = $request->get('descripcion');
+                $exercise->id_tema = $request->get('tema');
+                $exercise->id_contenido = $request->get('contenido');
+                $exercise->id_dificultad = $request->get('dificultad');
+                $exercise->id_tipo = $request->get('tipo');
+
+                $exercise->dificultad = $dificultad->nombre;
+                $exercise->tipo_nombre = $tipo->nombre ;
+                $exercise->nombre_contenido = $contenido->nombre;
+                $exercise->tema = $tema->nombre;
+                $exercise->aprobado = 1;
+
+                $exercise->usuario_modificador= $usuario->name;
+
+                $exercise->updated_at = $hoy;
+                $exercise->update();
+
+                flash('Se Actualizo Correctamente')->success();
+
+                DB::commit();
+
+                return Redirect::to('gestion/contenido/ejercicio/'.$id);
+          
+            } catch (Exception $e){
+                flash('Error al Guardar ejercicio')->error();
+                DB::rollback();
+            }
+        }else{
+            return Redirect::to('/');
+        }
+       
     }
 
     /**
@@ -218,6 +290,28 @@ class ExerciseController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Exercise::destroy($id);
+         //obtengo el usuario 
+        $usuario = Auth::user();
+        //obtengo los ejercicios 
+        $ejercicio=DB::table('exercises as exx')
+            ->select('exx.*')
+            ->where('exx.id_usuario','=', $usuario->id)
+            ->orderBy('exx.id','desc')
+            ->paginate(10);
+        flash('Se elimino Correctamente')->success();
+        return back();
+    }
+
+    public function favorito($id){
+        $exercise = Exercise::findOrfail($id);
+        if($exercise->favorito == 1){
+            $exercise->favorito = 0;
+        }else{
+            $exercise->favorito = 1;
+        }
+        
+        $exercise->update();
+        return back();
     }
 }
