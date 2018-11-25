@@ -35,16 +35,21 @@ Route::resource('gestion/contenido/ejercicio/{id}/solucion','SolutionController'
 
 /**Publicaciones */
 Route::get('gestion/contenido/mis/publicaciones','PublicationController@index');
-
 Route::get('gestion/contenido/mis/publicaciones/ejercicios', 'PublicationController@myExercise');
-
 Route::get('gestion/contenido/mis/publicaciones/soluciones', 'PublicationController@mySolution');
+
 /**Favoritos*/
 Route::get('gestion/contenido/favoritos','FavoriteController@index');
 Route::post('favorito/ejercicio/{id}', ['as' => 'favoritoEjercicio', 'uses' => 'FavoriteController@agregarFavoriteEjercicio']);
-
+Route::post('favorito/archivos/{id}', ['as' => 'favoritoSolucion', 'uses' => 'FavoriteController@agregarFavoriteArchivo']);
 
 /**
  * select
  */
 Route::get('/content/{id}','SelectController@getContent');
+
+/**Subida de archivos  */
+Route::get('gestion/contenido/subir/archivo',['as'=>'image', 'uses'=>'UploadController@upload']);
+Route::put('/imageUpload',['as'=>'imageUpload','uses'=>'UploadController@uploaded']);
+Route::resource('gestion/contenido/archivos/subidos','UploadController');
+Route::get('download/{id}', ['as' => 'downloadFile', 'uses' => 'UploadController@downloadFile']);

@@ -41,7 +41,7 @@
                     width="400" height="300" alt="Card image cap">
                         <div class="card-block">
                         <h5  class="card-title text-center">
-                            <a href="">
+                            <a href="{{URL::action('UploadController@index')}}">
                                  <b>Repositorio de material digitalizado</b>
                             </a>
                         </h5>

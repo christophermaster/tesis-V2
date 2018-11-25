@@ -24,13 +24,15 @@
         <link rel="stylesheet" href="{{asset('pages/waves/css/waves.min.css')}}" type="text/css" media="all">
 		<!-- feather icon -->
 		<link rel="stylesheet" type="text/css" href="{{asset('icon/simple-line-icons/css/simple-line-icons.css')}}">
-        <link rel="stylesheet" type="text/css" href="{{asset('icon/feather/css/feather.css')}}">
+		<link rel="stylesheet" type="text/css" href="{{asset('icon/feather/css/feather.css')}}">
+		 <link rel="stylesheet" type="text/css" href="{{asset('icon/font-awesome/css/font-awesome.min.css')}}">
         <!-- Style.css -->
 		<link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
 		<link rel="stylesheet" type="text/css" href="{{asset('css/pages.css')}}">
 		<link rel="stylesheet" type="text/css" href="{{asset('css/widget.css')}}">
 		<link rel="stylesheet" type="text/css" href="{{asset('css/propio.css')}}">
-
+		<link rel="stylesheet" type="text/css" href="{{asset('dropzone/dist/dropzone.css')}}">
+    	<script type="text/javascript" src="{{asset('dropzone/dist/dropzone.js')}}"></script>
 	</head>
 
 <body >
@@ -205,7 +207,7 @@
 									<div class="pcoded-navigation-label">Subir</div>
 									<ul class="pcoded-item pcoded-left-item">
 										<li class=" ">
-											<a href="form-picker.html" class="waves-effect waves-dark">
+											<a href="{{url('gestion/contenido/subir/archivo')}}" class="waves-effect waves-dark">
 												<span class="pcoded-micon">
 													<i class="icon-cloud-upload"></i>
 												</span>
@@ -300,8 +302,7 @@
     <script type="text/javascript" src="{{asset('js/xml.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('ckeditor4/plugins/ckeditor_wiris/integration/WIRISplugins.js')}}"></script>
     <script type="text/javascript" src="{{asset('ckfinder/ckfinder.js')}}"></script>
-    <script type="text/javascript" src="{{asset('dropzone/dist/dropzone.js')}}"></script>
-    <link rel="stylesheet" type="text/css" href="{{asset('dropzone/dist/dropzone.css')}}">
+
 	<script type="text/javascript" src="{{asset('ckeditor4/ckeditor.js')}}"></script>
 	
 
