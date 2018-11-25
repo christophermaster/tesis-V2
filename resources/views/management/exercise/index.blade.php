@@ -20,10 +20,10 @@
                             <a href="{{url('gestion/contenido')}}"><i class="feather icon-home"></i></a>
                         </li>
                         @if($ubication == "Home")
-                        <li class="breadcrumb-item"><a href="#!">listado de Ejercicios</a> </li>
+                        <li class="breadcrumb-item"><a href="#!">Ejercicios</a> </li>
                         @elseif($ubication == "Publication")
-                        <li class="breadcrumb-item"><a href="{{url('gestion/contenido/mis/publicaciones/ejercicios')}}">Mis Publicaciones</a> </li>
-                        <li class="breadcrumb-item"><a href="#!">listado de Ejercicios</a> </li>
+                        <li class="breadcrumb-item"><a href="{{url('gestion/contenido/mis/publicaciones')}}">Mis publicaciones</a></li>
+                        <li class="breadcrumb-item"><a href="#!">Ejercicios</a> </li>
                         @endif
                     </ul>
                 </div>

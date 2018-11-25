@@ -17,7 +17,7 @@
                 <div class="page-header-breadcrumb">
                     <ul class=" breadcrumb breadcrumb-title">
                         <li class="breadcrumb-item">
-                            <a href="index.html"><i class="feather icon-home"></i></a>
+                            <a href="{{url('gestion/contenido/ejercicio')}}"><i class="feather icon-home"></i></a>
                         </li>
                         <li class="breadcrumb-item"><a href="#!">Inicio</a> </li>
                     </ul>
@@ -58,7 +58,7 @@
                         <img class="card-img-top img-fluid"  src="{{asset('images/card-3.jpg')}}"  width="400" height="300" alt="Card image cap">
                         <div class="card-block">
                         <h5 class="card-title text-center">
-                            <a href="">
+                            <a href="{{url('gestion/contenido/ejercicio')}}">
                                 <b>Repositorio de Ejercicios y Soluciones</b>
                             </a>
                         </h5>

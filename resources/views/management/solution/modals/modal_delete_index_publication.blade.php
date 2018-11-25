@@ -1,6 +1,6 @@
 <div class="modal fade" aria-hidden="true"
 role="dialog" tabindex="-1" id="modal-delete-solution-{{$sol->id}}">
-{{Form::Open(array('action'=>array('SolutionController@destroy',$ejer->id,$sol->id),'method'=>'delete'))}}
+{{Form::Open(array('action'=>array('SolutionController@destroy','0',$sol->id),'method'=>'delete'))}}
 	<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">

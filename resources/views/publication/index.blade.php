@@ -17,7 +17,7 @@
                 <div class="page-header-breadcrumb">
                     <ul class=" breadcrumb breadcrumb-title">
                         <li class="breadcrumb-item">
-                            <a href="index.html"><i class="feather icon-home"></i></a>
+                            <a href="{{url('gestion/contenido')}}"><i class="feather icon-home"></i></a>
                         </li>
                         <li class="breadcrumb-item"><a href="#!" disabled>Publicaciones</a> </li>
                     </ul>
@@ -26,6 +26,7 @@
         </div>
     </div>
 
+    <br>
     <!--Publicaciones-->
     <div class="row">
         <div class="col-xl-3 col-md-6">

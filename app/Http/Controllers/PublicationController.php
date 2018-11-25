@@ -106,7 +106,7 @@ class PublicationController extends Controller
                 ->orderBy('ex.id','desc')
                 ->get();
             
-            return view("management.solution.index",["solucion"=>$solucion,"searchText"=>$query,
+            return view("management.solution.index_publication",["solucion"=>$solucion,"searchText"=>$query,
             "ubication"=>$ubication]);
         }
 

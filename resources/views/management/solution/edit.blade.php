@@ -16,10 +16,17 @@
                 <div class="page-header-breadcrumb">
                     <ul class=" breadcrumb breadcrumb-title">
                         <li class="breadcrumb-item">
-                            <a href="index.html"><i class="feather icon-home"></i></a>
+                            <a href="{{url('gestion/contenido')}}"><i class="feather icon-home"></i></a>
                         </li>
-                        <li class="breadcrumb-item"><a href="#!">Detalles Ejercicio</a> </li>
-                        <li class="breadcrumb-item"><a href="#!">Modificar Solución</a> </li>
+                        <li class="breadcrumb-item">
+                            @if($id != 0)
+                              <a href="{{URL::action('ExerciseController@show',$id)}}">Ejercicio</a>
+                            @else
+                             <a href="{{URL::action('PublicationController@mySolution')}}">Soluciones</a>
+                            @endif
+                            
+                         </li>
+                        <li class="breadcrumb-item"><a href="#!">Modificar solución</a> </li>
                     </ul>
                 </div>
             </div>
@@ -29,12 +36,9 @@
     <a href="{{url('http://www.wiris.com/plugins/demo/ckeditor/php')}}" title="PHP">
     <input type="hidden" id="php_logo" class="wrs_tech_logo" alt="PHP"></a>
 
-@if($ubication == 'Publication')
-    {!!Form::model($solucion,['method'=>'PATCH','route'=>['solucion.update','0',$solucion->id],'files'=>'true'])!!}
-@else
+
   {!!Form::model($solucion,['method'=>'PATCH','route'=>['solucion.update',$id,$solucion->id],'files'=>'true'])!!}
-@endif
-    {{Form::token()}}
+  {{Form::token()}}
     <br>
     <!--CkEditor-->                                         
     <div class="col-xl-12 col-md-12">

@@ -130,7 +130,12 @@ class SolutionController extends Controller
         $solucion->updated_at = $hoy;
         $solucion->update();
         flash('Se actualizo de forma Correcta')->success();
-        return Redirect::to('gestion/contenido/ejercicio/'.$idx);
+        if($idx==0){
+           return Redirect::to('gestion/contenido/mis/publicaciones/soluciones');
+        }else{
+            return Redirect::to('gestion/contenido/ejercicio/'.$idx);
+        }
+        
     }
 
     /**

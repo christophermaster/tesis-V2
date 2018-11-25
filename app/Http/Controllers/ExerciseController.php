@@ -185,12 +185,12 @@ class ExerciseController extends Controller
      */
     public function show($id)
     {
+
         $ejercicio = Exercise::findOrfail($id);
         $solucion  = DB::table('solutions as sol')
                     ->select('sol.*')
                     ->where('sol.id_ejercicio','=', $id)->get();
         return view("management.exercise.show",["ejer"=>$ejercicio,"solucion"=>$solucion]);
-        return Redirect::to('/');
     }
 
     /**
@@ -202,7 +202,6 @@ class ExerciseController extends Controller
     public function edit($id)
     {
         $ejercicio = Exercise::findOrfail($id);
-
         $tema=DB::table('topics as t')
         ->select('t.*')
         ->get();

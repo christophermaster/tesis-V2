@@ -16,8 +16,9 @@
                 <div class="page-header-breadcrumb">
                     <ul class=" breadcrumb breadcrumb-title">
                         <li class="breadcrumb-item">
-                            <a href="index.html"><i class="feather icon-home"></i></a>
+                            <a href="{{url('gestion/contenido')}}"><i class="feather icon-home"></i></a>
                         </li>
+                        <li class="breadcrumb-item"><a href="{{ URL::previous() }}">Ejercicios</a></li>
                         <li class="breadcrumb-item"><a href="#!">Detalles</a></li>
                     </ul>
                 </div>

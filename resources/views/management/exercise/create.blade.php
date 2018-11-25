@@ -3,7 +3,7 @@
     <!-- [ breadcrumb ] start -->
     <div class="page-header card">
         <div class="row align-items-end">
-            <div class="col-lg-8">
+            <div class="col-lg-6">
                 <div class="page-header-title">
                     <i class="icon-puzzle bg-c-blue"></i>
                     <div class="d-inline">
@@ -12,13 +12,16 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-6">
                 <div class="page-header-breadcrumb">
                     <ul class=" breadcrumb breadcrumb-title">
                         <li class="breadcrumb-item">
-                            <a href="index.html"><i class="feather icon-home"></i></a>
+                            <a href="{{url('gestion/contenido')}}"><i class="feather icon-home"></i></a>
                         </li>
-                        <li class="breadcrumb-item"><a href="#!">Crear Ejercicio</a> </li>
+                        @if(URL::previous() !='http://localhost:8000/gestion/contenido')
+                        <li class="breadcrumb-item"><a href="{{ URL::previous() }}">Ejercicios</a></li>
+                        @endif
+                        <li class="breadcrumb-item"><a href="#!">Crear Ejercicio</a></li>
                     </ul>
                 </div>
             </div>

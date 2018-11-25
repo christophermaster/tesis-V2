@@ -16,10 +16,10 @@
                 <div class="page-header-breadcrumb">
                     <ul class=" breadcrumb breadcrumb-title">
                         <li class="breadcrumb-item">
-                            <a href="index.html"><i class="feather icon-home"></i></a>
+                            <a href="{{url('gestion/contenido')}}"><i class="feather icon-home"></i></a>
                         </li>
                         <li class="breadcrumb-item">
-                            <a href="index.html">Ejericicio</a>
+                            <a href="{{URL::action('ExerciseController@show',$id)}}">Ejericicio</a>
                         </li>
                         <li class="breadcrumb-item"><a href="#!">Crear Solución</a> </li>
                     </ul>
