@@ -1,0 +1,1 @@
+{"result":{"text":"raíz v-ésima de v"},"status":"ok"}

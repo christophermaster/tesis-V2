@@ -44,7 +44,7 @@
                     <h2 class="text-dribbble m-b-20"><i class="icon-graph"></i></h2>
                     <h3 class="text-dribbble f-w-700">{{$cantSoluciones->cantidad}}</h3>
                     <p>Soluciones</p>
-                    <a href="#!" disabled>Ver más <i class="ti-arrow-right"></i></a>
+                    <a href="{{url('gestion/contenido/mis/publicaciones/soluciones')}}" disabled>Ver más <i class="ti-arrow-right"></i></a>
                 </div>
             </div>
         </div>

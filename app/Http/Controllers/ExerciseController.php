@@ -304,6 +304,7 @@ class ExerciseController extends Controller
     }
 
     public function favorito($id){
+        
         $exercise = Exercise::findOrfail($id);
         if($exercise->favorito == 1){
             $exercise->favorito = 0;

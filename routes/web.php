@@ -28,30 +28,17 @@ Route::get('gestion/contenido', function () {
 });
 
 /* Ejercicios */
-
 Route::resource('gestion/contenido/ejercicio','ExerciseController');
 
-Route::get('gestion/contenido/crear/ejercicio', function () {
-    return view('management/exercise/create');
-});
-Route::get('gestion/contenido/listar/ejercicios', function () {
-    return view('management/exercise/index');
-});
-Route::get('gestion/contenido/ejercicio/editar', function () {
-    return view('management/exercise/editar');
-});
-Route::get('gestion/contenido/ejercicio/eliminar', function () {
-    return view('management/exercise/eliminar');
-});
-Route::get('gestion/contenido/ejercicio/detalles', function () {
-    return view('management/exercise/details');
-});
+/* Solucionies */
+Route::resource('gestion/contenido/ejercicio/{id}/solucion','SolutionController');
 
 /**Publicaciones */
 Route::get('gestion/contenido/mis/publicaciones','PublicationController@index');
 
 Route::get('gestion/contenido/mis/publicaciones/ejercicios', 'PublicationController@myExercise');
 
+Route::get('gestion/contenido/mis/publicaciones/soluciones', 'PublicationController@mySolution');
 /**Favoritos*/
 Route::get('gestion/contenido/favoritos','FavoriteController@index');
 Route::post('favorito/ejercicio/{id}', ['as' => 'favoritoEjercicio', 'uses' => 'FavoriteController@agregarFavoriteEjercicio']);

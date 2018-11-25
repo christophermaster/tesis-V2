@@ -134,5 +134,26 @@
     @endif
 
     <!--Soluciones-->
-    @include('management.solution.index')
+    @foreach($solucion as $sol)
+        <div class="col-xl-12 col-md-12">
+            <div class="card latest-update-card">
+                <div class="card-header">
+                    <h5 class="card-title">Solución  </h5>
+                    <div class="card-header-right">
+                        <ul class="list-unstyled card-option">
+                            <li class="first-opt"><i class="feather icon-chevron-left open-card-option"></i></li>
+                            <li><i class="feather icon-minus minimize-card"></i></li>
+                            <li><i class="icon-pencil"></i></li>
+                            <li><i class="feather icon-trash close-card"></i></li>
+                            <li><i class="feather icon-chevron-left open-card-option"></i></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card-block">
+                    <?php echo $ejer->contenido ?>
+                </div>
+            </div>
+        </div>
+    @endforeach
+
 @endsection

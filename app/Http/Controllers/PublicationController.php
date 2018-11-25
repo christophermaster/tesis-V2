@@ -88,6 +88,29 @@ class PublicationController extends Controller
         }
 
     }
+
+    public function mySolution(Request $request){
+
+        if($request){
+
+            //variable que me permite saber donde estoy 
+            $ubication = "Publication";
+            //obtengo el usuario 
+            $usuario = Auth::user();
+            //obtengo los ejercicios 
+            $query=trim($request->get('searchText'));
+            $solucion=DB::table('solutions as ex')
+                ->select('ex.*')
+                ->where('ex.id_usuario','=', $usuario->id)
+                ->where('ex.contenido','LIKE','%'.$query.'%')
+                ->orderBy('ex.id','desc')
+                ->get();
+            
+            return view("management.solution.index",["solucion"=>$solucion,"searchText"=>$query,
+            "ubication"=>$ubication]);
+        }
+
+    }
     
     /**
      * Show the form for creating a new resource.

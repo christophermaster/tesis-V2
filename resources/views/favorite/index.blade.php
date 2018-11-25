@@ -40,11 +40,6 @@
                     <div class="slide"></div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#profile7" role="tab">
-                        <i class="margin-icon icon-graph"></i>Soluciones</a>
-                    <div class="slide"></div>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" data-toggle="tab" href="#messages7" role="tab">
                         <i class="ti-write margin-icon"></i>Parciales</a>
                     <div class="slide"></div>
@@ -101,10 +96,6 @@
                             {{$ejercicio->render()}}
                         </div>
                     </div>
-                </div>
-                <div class="tab-pane" id="profile7" role="tabpanel">
-                    <br>
-                    <p class="m-0">2.Cras consequat in enim ut efficitur. Nulla posuere elit quis auctor interdum praesent sit amet nulla vel enim amet. Donec convallis tellus neque, et imperdiet felis amet.</p>
                 </div>
                 <div class="tab-pane" id="messages7" role="tabpanel">
                     <br>
