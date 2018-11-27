@@ -55,7 +55,7 @@
                     <h2 class="text-linkedin m-b-20"><i class="ti-cloud-up"></i></h2>
                     <h3 class="text-linkedin f-w-700">{{$cantUpdate->cantidad}}</h3>
                     <p>Archivos Subidos</p>
-                    <a href="#!" disabled>Ver más <i class="ti-arrow-right"></i></a>
+                    <a href="{{url('gestion/contenido/mis/publicaciones/archivos')}}" disabled>Ver más <i class="ti-arrow-right"></i></a>
                 </div>
             </div>
         </div>

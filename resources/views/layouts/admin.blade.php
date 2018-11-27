@@ -94,19 +94,19 @@
 										<ul class="show-notification profile-notification dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
 											<li>
 												<a href="#!">
-													<i class="feather icon-settings"></i> Settings
+													<i class="feather icon-settings"></i> Configuración
 
 												</a>
 											</li>
 											<li>
 												<a href="#">
-													<i class="feather icon-user"></i> Profile
+													<i class="feather icon-user"></i> Perfil
 
 												</a>
 											</li>
 											<li>
 												<a href="auth-sign-in-social.html">
-													<i class="feather icon-log-out"></i> Logout
+													<i class="feather icon-log-out"></i> Salir
 
 												</a>
 											</li>
@@ -219,7 +219,7 @@
 									<div class="pcoded-navigation-label">Administraccion</div>
 									<ul class="pcoded-item pcoded-left-item">
 										<li class=" ">
-											<a href="form-picker.html" class="waves-effect waves-dark">
+											<a href="{{url('gestion/contenido/administracion/usuarios')}}" class="waves-effect waves-dark">
 												<span class="pcoded-micon">
 													<i class="icon-people"></i>
 												</span>

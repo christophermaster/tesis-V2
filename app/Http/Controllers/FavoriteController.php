@@ -130,7 +130,4 @@ class FavoriteController extends Controller
         flash('Se elimino Correctamente')->success();
         return back() ;
     }
-
- 
-   
 }

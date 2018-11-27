@@ -111,70 +111,27 @@ class PublicationController extends Controller
         }
 
     }
+
     
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+    public function myUpdateFile(Request $request){
+        //variable que me permite saber donde estoy 
+        $ubication = "Publication";
+        $usuario = Auth::user();
+        $query=trim($request->get('searchText'));
+        if($request){
+            $upload=DB::table('uploads as upl')
+            ->select('upl.*')
+            ->where('upl.id_usuario','=', $usuario->id)
+            ->where('upl.titulo','LIKE','%'.$query.'%')
+            ->orderBy('upl.id','desc')
+            ->paginate(40);
+            return view('upload_file.index',["upload"=>$upload,"searchText"=>$query,
+            "ubication"=>$ubication]);
+        }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
     }
+    
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+    
+    
 }

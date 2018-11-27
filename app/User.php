@@ -3,7 +3,6 @@
 namespace Gestion;
 
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -16,8 +15,12 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','id_persona','usuario_creador','id_cargo',
+        'usuario_modificador',
+        'created_at',
+        'updated_at',
     ];
+
 
     /**
      * The attributes that should be hidden for arrays.

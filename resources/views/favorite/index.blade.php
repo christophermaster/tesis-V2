@@ -103,7 +103,60 @@
                 </div>
                 <div class="tab-pane" id="settings7" role="tabpanel">
                     <br>
-                    <p class="m-0">4.Cras consequat in enim ut efficitur. Nulla posuere elit quis auctor interdum praesent sit amet nulla vel enim amet. Donec convallis tellus neque, et imperdiet felis amet.</p>
+                   <div class="container">
+                        <div class="row">
+                            @foreach($upload as $upl)
+                                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 cardCenter">
+                                    <div class="card social-card ">
+                                        <div class="card-header">
+                                        <div class="card-header-right">
+                                            <ul class="list-unstyled card-option">
+                                                <li class="first-opt"><i class="feather icon-chevron-left open-card-option"></i></li>
+                                                <li><a href ="{{route('downloadFile',['id' => $upl->id])}}">
+                                                    <i class="ti-cloud-down"></i></a>
+                                                </li>
+                                                <li><a href="#" data-toggle="modal" data-target="#modal-show-{{$upl->id}}"><i class="feather icon-eye"></i></a></li>
+                                                <li><a href="#" data-toggle="modal" data-target="#modal-delete-{{$upl->id}}" rel="tooltip" title="Eliminar"><i class="feather icon-trash"></i></a></li>
+                                                <li>
+                                                <form method="post" action="/favorito/archivos/{{$upl->id}}">
+                                                    @csrf
+                                                    <input type="hidden" value="{{csrf_token()}}" name="_token" />
+                                                        <button class="noFavorito" type="submit" rel="tooltip" title="Agregar a favoritos">
+                                                        <i class="feather icon-heart"></i>
+                                                        </button>
+                                                </form>
+                                                </li>
+                                                <li><i class="feather icon-chevron-left open-card-option"></i></li>
+                                            </ul>
+                                        </div>
+                                        </div>
+                                        <div class="card-body text-center">
+                                            @if($upl->tipo_archivo == "application/pdf" )
+                                                <h2 class="text-dribbble m-b-20"><i  class="fa fa-file-pdf-o"></i></h2>
+                                            @elseif($upl->tipo_archivo == "application/vnd.openxmlformats-officedocument.wordprocessingml.document" )
+                                                <h2 class="text-facebook m-b-20"><i class="fa fa-file-word-o"></i></h2>
+                                            @elseif($upl->tipo_archivo == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" || $upl->tipo_archivo == "application/vnd.ms-excel" )
+                                                <h2 class="text-facebook m-b-20"><i class="fa fa-file-excel-o"></i></h2>
+                                            @elseif($upl->tipo_archivo == "application/zip, application/x-compressed-zip" )
+                                                <h2 class="text-facebook m-b-20"><i class="fa fa-file-zip-o"></i></h2>
+                                            @elseif($upl->tipo_archivo == "application/vnd.ms-powerpointtd>" ||$upl->tipo_archivo == "application/vnd.openxmlformats-officedocument.presentationml.presentation"  )
+                                                <h2 class="text-facebook m-b-20"><i class="fa fa-file-powerpoint-o"></i></h2>
+                                            @elseif($upl->tipo_archivo == "image/jpeg" || $upl->tipo_archivo == "image/png"  )
+                                                <h2 class="text-facebook m-b-20"><i class="fa fa-file-image-o"></i></h2>
+                                            @else
+                                            <h2 class="text-facebook m-b-20"><i class="fa fa-file"></i></h2>
+                                            @endif
+                                        
+                                            <h3 class="text-facebook f-w-700"></h3>
+                                            <p>{{$upl->titulo}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                @include('upload_file.modals.modal_delete_index')
+                                @include('upload_file.modals.modal_show_index')
+                            @endforeach
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

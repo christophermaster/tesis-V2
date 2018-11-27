@@ -17,9 +17,12 @@
                         <li class="breadcrumb-item">
                             <a href="{{url('gestion/contenido')}}"><i class="feather icon-home"></i></a>
                         </li>
-                        <li class="breadcrumb-item">
-                            <a href="#!">Archivos Subidos</a>
-                        </li>
+                        @if($ubication == "Home")
+                        <li class="breadcrumb-item"><a href="#!">Archivos Subidos</a> </li>
+                        @elseif($ubication == "Publication")
+                        <li class="breadcrumb-item"><a href="{{url('gestion/contenido/mis/publicaciones')}}">Mis publicaciones</a></li>
+                        <li class="breadcrumb-item"><a href="#!">Archivos Subidos</a> </li>
+                        @endif
                     </ul>
                 </div>
             </div>

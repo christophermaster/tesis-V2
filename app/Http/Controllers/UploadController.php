@@ -39,6 +39,8 @@ class UploadController extends Controller
     public function index(Request $request){
 
         $usuario = Auth::user();
+        //variable que me permite saber donde estoy 
+        $ubication = "Home";
         $query=trim($request->get('searchText'));
         if($request){
             $upload=DB::table('uploads as upl')
@@ -46,7 +48,8 @@ class UploadController extends Controller
             ->where('upl.titulo','LIKE','%'.$query.'%')
             ->orderBy('upl.id','desc')
             ->paginate(40);
-            return view('upload_file.index',["upload"=>$upload,"searchText"=>$query]);
+            return view('upload_file.index',["upload"=>$upload,"searchText"=>$query,
+            "ubication"=>$ubication]);
         }
     }
 
