@@ -1,27 +1,52 @@
 @extends('layouts.admin')
  @section('contenido')
 
-<div class = "row recuadro">
-    <div class= "col-lg-8 col-md-8 col-sm-8 col-xs-12 text-left">
-        <h3> Listado de Contenidos</h3>
+<div class="page-header card">
+<div class="row align-items-end">
+    <div class="col-lg-6">
+        <div class="page-header-title">
+            <i class="fa fa-sticky-note-o bg-c-blue" aria-hidden="true"></i>
+            <div class="d-inline">
+                <h5>Administracción de Contenidos</h5>
+                <span>Gestion de contenido y evaluaciones</span>
+            </div>
+        </div>
     </div>
-    <div class= "col-lg-4 col-md-4 col-sm-4 col-xs-12 text-right">
-        <h3> 
-          @include('administration.university.content.search')
-        </h3>
+    <div class="col-lg-6">
+        <div class="page-header-breadcrumb">
+            <ul class=" breadcrumb breadcrumb-title">
+                <li class="breadcrumb-item">
+                    <a href="{{url('gestion/contenido')}}"><i class="feather icon-home"></i></a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="{{url('gestion/contenido/administracion/tema')}}">Administracción de Temas</a>
+                </li>
+                <li class="breadcrumb-item"><a href="#!">Contenido</a> </li>
+            </ul>
+        </div>
     </div>
 </div>
+</div>
 
+<br>
+<!--Buscador-->
+@include('administration.university.content.search')
+
+<div class="text-right">
+<div class= "col-lg-12 col-md-12 col-sm-12 col-xs-12 text-right">
+    <a href="#" data-toggle="modal" data-target="#modal-create" rel="tooltip" title="Ver">
+    <i class="fa fa-plus"></i> Agregar
+    </a>
+</div>
+<hr>
+</div>
+@include('administration.university.content.modals.modal_create')
+  
 <div class = "row">
     <div class= "col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
          <div class="card">
             <div class="card-header">
                 <div class= "col-lg-12 col-md-12 col-sm-12 col-xs-12 text-right">
-                    <h3> 
-                        <a href = "{{route('createContenido',['id' => $id_tema])}}">
-                            <button class ="btn btn-success">Nuevo</button>
-                        </a>
-                    </h3>
                 </div>          
             </div>
              <div class="card-body">
@@ -50,15 +75,11 @@
                                     <td>{{$con ->created_at}}</td>
                                     <td>{{$con ->updated_at}}</td>
                                     <td class="td-actions">
-                                        <a href="{{route('updateContenido',['id' => $con->id])}}">
-                                            <button type="button" rel="tooltip" class="btn btn-success btn-link" data-original-title="Editar" title="Editar">
-                                                <i class="material-icons">edit</i>
-                                            </button>
+                                        <a href="#" rel="tooltip" title="Editar">
+                                            <i class="fa fa-edit"></i>
                                         </a>
-                                        <a href="" data-toggle="modal">
-                                            <button type="button" rel="tooltip" class="btn btn-danger btn-link" data-original-title="Eliminar" title="Eliminar">
-                                                <i class="material-icons">close</i>
-                                            </button>
+                                        <a href="#" data-toggle="modal" data-target="#modal-delete-{{$con->id}}" rel="tooltip" title="Eliminar">
+                                           <i class="fa fa-trash"></i>
                                         </a>
                                     </td>
                                 </tr>

@@ -24,9 +24,8 @@ class TopicFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'nombre' =>'required|max:15',
+            'nombre' =>'required',
             'descripcion' => 'required|max:512',
-            'id_modulo'=> 'required',
             'numero_tema' => 'required' ,
         ];
     }

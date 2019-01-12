@@ -16,7 +16,6 @@ class Topic extends Model
         'nombre',
         'numero_tema',
         'descripcion',
-        'id_modulo',
         'usuario_creador',
         'usuario_modificador',
         'created_at',
@@ -25,9 +24,4 @@ class Topic extends Model
 
     protected $guarded =[
     ];
-
-    public static function topics($id){
-        return Topic::where('id_materia','=',$id)
-        ->get();
-    }
 }

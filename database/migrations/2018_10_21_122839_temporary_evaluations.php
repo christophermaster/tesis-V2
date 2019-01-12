@@ -15,23 +15,19 @@ class TemporaryEvaluations extends Migration
     {
        Schema::create('temporaryEvaluations', function (Blueprint $table) {
             $table->increments('id');//identificador de la tabla
-            $table->integer('id_facultad');
-            $table->string('facultad');
-            $table->integer('id_escuela');
-            $table->string('escuela');
-            $table->integer('id_catedra');
-            $table->string('catedra');
-            $table->integer('id_materia');
-            $table->string('materia');
+      
             $table->integer('id_tema');
             $table->string('tema');
-            $table->string('numero_evaluacion');
-            $table->integer('id_tipo_evaluacion');
-            $table->string('nombre_tipo_evaluacion');
-            $table->integer('id_subtipo_evaluacion');
-            $table->string('nombre_subtipo_evaluacion');
+            $table->integer('id_tipo');
+            $table->string('tipo');
+            $table->integer('id_evaluacion');
+            $table->string('evaluacion');
+            $table->integer('id_dificultad');
+            $table->string('dificultad');
+            $table->integer('cantidad_teorico');
+            $table->integer('cantidad_Practico');
+            $table->integer('generada');
             $table->string('fecha');
-            $table->boolean('aprobado');
             $table->integer('id_usuario');
             $table->string('usuario_creador');
             $table->string('usuario_modificador');

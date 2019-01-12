@@ -88,7 +88,7 @@
 									<div class="dropdown-primary dropdown">
 										<div class="dropdown-toggle" data-toggle="dropdown">
 											
-											<span>John Doe</span>
+											<span>{{Auth::user()->name}}</span>
 											<i class="feather icon-chevron-down"></i>
 										</div>
 										<ul class="show-notification profile-notification dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
@@ -188,7 +188,7 @@
 													</a>
 												</li>
 												<li class="">
-													<a href="breadcrumb.html" class="waves-effect waves-dark">
+													<a href="{{url('gestion/contenido/crear/evaluacion')}}" class="waves-effect waves-dark">
 														<span class="pcoded-mtext">Crear</span>
 													</a>
 												</li>
@@ -228,7 +228,7 @@
 											</a>
 										</li>
 										<li class=" ">
-											<a href="form-picker.html" class="waves-effect waves-dark">
+											<a href="{{url('gestion/contenido/administracion/tema')}}" class="waves-effect waves-dark">
 												<span class="pcoded-micon">
 													<i class="icon-notebook"></i>
 												</span>

@@ -32,6 +32,10 @@ Route::resource('gestion/contenido/ejercicio','ExerciseController');
 
 /* Solucionies */
 Route::resource('gestion/contenido/ejercicio/{id}/solucion','SolutionController');
+/* Evaluaciones*/
+Route::resource('gestion/contenido/evaluacion','EvaluationController');
+Route::get('gestion/contenido/crear/evaluacion','EvaluationController@indexCreate');
+Route::post('gestion/contenido/evaluacion/creada','EvaluationController@create');
 
 /**Publicaciones */
 Route::get('gestion/contenido/mis/publicaciones','PublicationController@index');
@@ -57,3 +61,19 @@ Route::get('download/{id}', ['as' => 'downloadFile', 'uses' => 'UploadController
 
 // Administraccion de usuarios 
 Route::resource('gestion/contenido/administracion/usuarios','AdminUserController');
+
+// Administraccion de Contenido
+Route::resource('gestion/contenido/administracion/contenidos','ContentController');
+
+//
+/**
+ * Temas
+ */
+Route::resource('gestion/contenido/administracion/tema','TopicController');
+
+/**
+ * Contenido
+ */
+Route::get('gestion/contenido/administracion/tema/contenido/{id}', ['as' => 'contenido', 'uses' => 'ContentController@index']);
+Route::post('facultad/contenido/modificar/{id}', 'ContentController@update');
+Route::post('gestion/contenido/administracion/tema/contenido','ContentController@store');

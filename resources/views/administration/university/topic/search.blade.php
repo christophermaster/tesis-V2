@@ -1,13 +1,14 @@
-{!! Form::open(array('url' => 'facultad/tema/'.$id_modulo, 'method'=> 'Get','autocomplete' =>'off','role' => 'search'))!!}
+{!! Form::open(array('url' => 'gestion/contenido/administracion/tema', 'method'=> 'Get','autocomplete' =>'off','role' => 'search'))!!}
 
-<div class = "form-group">
-    <div class="input-group no-border">
-        <input type="text" class="form-control" name = "searchText" placeholder = "Buscar..." value ="{{$searchText}}">
-        <button type="submit" class="btn btn-white btn-round btn-just-icon">
-            <i class="material-icons">search</i>
-            <div class="ripple-container"></div>
-        </button>
-    </div>   
-</div>
+    <div class="col-xl-12 col-md-12 buscador">
+        <div class=" col-xl-4 col-md-4 ">
+            <div class="input-group ">
+                <input type="text" class="form-control" name="searchText" placeholder="Buscar" value ="{{$searchText}}">
+                <button type="submit" class="btn btn-primary btn-just-icon">
+                        <i class="feather icon-search "></i>
+                </button>
+            </div>
+        </div>
+    </div>
 
 {{Form::close()}}
