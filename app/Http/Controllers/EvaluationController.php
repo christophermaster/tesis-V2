@@ -24,7 +24,7 @@ use Laracasts\Flash\Flash;
 use Illuminate\Support\Facades\Auth;
 use DB;
 use Gestion\User;
-
+use PDF;
 class EvaluationController extends Controller
 {
     /**
@@ -32,16 +32,15 @@ class EvaluationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $rand = range(1, 13);
-        shuffle($rand);
-        $pila = array();
-        for ($i = 0; $i < 4; $i++) {
-            array_push($pila,$rand[$i]);
-        }
-        print_r($pila);
-        dd($pila);
+       $searchText = '';
+       $temporaryEvaluation = DB::table('temporaryevaluations as tem')
+                    ->select('tem.*')
+                    ->get();
+
+        return view("management.evaluation.index",["temporaryEvaluation" => $temporaryEvaluation,
+        'searchText' => $searchText]);
     }
 
     /**
@@ -51,51 +50,61 @@ class EvaluationController extends Controller
      */
     public function create(Request $request)
     {
-        $evaluation = new TemporaryEvaluation;
-        //obtengo el  usuario
-        $usuario = Auth::user();
-        //obtengo la fecha de hopy 
-        $hoy = date("Y-m-d");
-        //obtengo el nombre da tema,facultad,escuela ,catedra,etc..
-        $tema = Topic::findOrfail($request->get('tema'));
-        $dificultad = Difficulty::findOrfail($request->get('dificultad'));
-        $typeEvaluation = TypeEvaluation::findOrfail($request->get('tipo'));
-        $evaluations = TypeExercise::findOrfail($request->get('evaluacion'));
 
-        $evaluation->id_tema = $tema->id;
-        $evaluation->tema = $tema->nombre;   
+        $todos = [];
+        $practico = [];
+        $teorico = [];
 
-        $evaluation->id_tipo = $typeEvaluation->id;
-        $evaluation->tipo = $typeEvaluation->nombre;
+        if($request->get('generar') == 1) {
 
-        $evaluation->id_evaluacion = $evaluations->id;
-        $evaluation->evaluacion = $evaluations->nombre;
-
-        $evaluation->id_dificultad = $dificultad->id;
-        $evaluation->dificultad = $dificultad->nombre;
-
-        $evaluation->fecha =$request->get('fecha');
-        $evaluation->id_usuario = $usuario->id;
-
-        $evaluation->impreso = 0;
-
-        if(Auth::check()){
-            $evaluation->usuario_creador=$usuario->name;
-            $evaluation->usuario_modificador= $usuario->name;
-        }
-
-        $evaluation->created_at = $hoy;
-        $evaluation->updated_at = $hoy;
-
-        $evaluation->save();
-
-        if ($request->get('generar') == 1) {
+            if($request->get('evaluacion') !== "3"){
+                $todos = Exercise::where('id_tipo',$request->get('evaluacion'))
+                ->where('id_tema',$request->get('tema'))
+                ->get()
+                ->random(2);
+            }else {
+                
+                $teorico = Exercise::where('id_tipo',1)
+                ->where('id_tema',$request->get('tema'))
+                ->get()
+                ->random(2);
+                $practico = Exercise::where('id_tipo',2)
+                ->where('id_tema',$request->get('tema'))
+                ->get()
+                ->random(2);
+            }
 
         } else {
 
-        }
+            if($request->get('evaluacion') !== "3"){
 
-        return Redirect::to('crear/evaluacion/'.$evaluation->id);
+                $todos = Exercise::where('id_tipo',$request->get('evaluacion'))
+                ->where('id_tema',$request->get('tema'))
+                ->get();
+
+            }else {
+
+                $teorico = Exercise::where('id_tipo',1)
+                ->where('id_tema',$request->get('tema'))
+                ->get();
+
+                $practico = Exercise::where('id_tipo',2)
+                ->where('id_tema',$request->get('tema'))
+                ->get();
+                
+            }
+            
+           return view("management.evaluation.index_publication",["todos" => $todos, "teorico" => $teorico,
+           "practico"=>$practico, "dificultad"=>$request->get('dificultad'),"tipo"=>$request->get('tipo'),
+           "tema"=>$request->get('tema'), "evaluacion"=>$request->get('evaluacion'),'ver'=> $request->get('evaluacion'),
+           "cantA"=>$request->get('nTeorico'),"cantB"=>$request->get('nPractico')]);
+        }
+              //obtengo el nombre da tema,facultad,escuela ,catedra,etc..
+        return view("management.evaluation.random",["todos" => $todos, "teorico" => $teorico,
+           "practico"=>$practico, "dificultad"=>$request->get('dificultad'),"tipo"=>$request->get('tipo'),
+           "tema"=>$request->get('tema'),"evaluacion"=>$request->get('evaluacion'),
+           'ver'=> $request->get('evaluacion'),"cantA"=>$request->get('nTeorico'),
+           "cantB"=>$request->get('nPractico')]);
 
     }
     /**
@@ -105,6 +114,8 @@ class EvaluationController extends Controller
      */
     public function IndexCreate()
     {
+        $usuario = Auth::user();
+
         $tema=DB::table('topics as t')
         ->select('t.*')
         ->get();
@@ -121,63 +132,13 @@ class EvaluationController extends Controller
         ->select('t.id','t.nombre')
         ->get();
 
+        $temporaryEvaluation = DB::table('temporaryevaluations as tem')
+                    ->select('tem.*')
+                    ->where("tem.id_usuario","=",$usuario->id)
+                    ->get();
+
         return view("management.evaluation.index_create",["dificultad"=>$dificultad,
-        "tipo"=>$tipo,"tema"=>$tema, "tipo_evaluacion"=>$tipo_evaluacion]);
+        "tipo"=>$tipo,"tema"=>$tema, "tipo_evaluacion"=>$tipo_evaluacion, "temporaryEvaluation" => $temporaryEvaluation]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

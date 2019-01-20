@@ -77,3 +77,11 @@ Route::resource('gestion/contenido/administracion/tema','TopicController');
 Route::get('gestion/contenido/administracion/tema/contenido/{id}', ['as' => 'contenido', 'uses' => 'ContentController@index']);
 Route::post('facultad/contenido/modificar/{id}', 'ContentController@update');
 Route::post('gestion/contenido/administracion/tema/contenido','ContentController@store');
+
+/** Parciles */
+Route::post('gestion/contenido/evaluacion/crear', 'EvaluationController@create');
+
+/** Parciles */
+Route::get('gestion/contenido/pdf',['as' => 'pdf', 'uses' => 'PDFExportController@index']);
+Route::get('gestion/contenido/lista/evaluaciones',['as' => 'pdf', 'uses' => 'EvaluationController@index']);
+Route::get('gestion/contenido/pdf/manual', 'PDFExportController@manual');

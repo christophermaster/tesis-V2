@@ -18,7 +18,10 @@
         <!-- Google font-->
         <link href="{{url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800')}}" rel="stylesheet">
         <link href="{{url('https://fonts.googleapis.com/css?family=Quicksand:500,700')}}" rel="stylesheet">
-        <!-- Required Fremwork -->
+	  
+		 <link href="{{url('https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css')}}" rel="stylesheet">
+		  <link href="{{url('https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
+<!-- Required Fremwork -->
         <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap/css/bootstrap.min.css')}}">
         <!-- waves.css -->
         <link rel="stylesheet" href="{{asset('pages/waves/css/waves.min.css')}}" type="text/css" media="all">
@@ -183,7 +186,7 @@
 											</a>
 											<ul class="pcoded-submenu">
 												<li class="">
-													<a href="alert.html" class="waves-effect waves-dark">
+													<a href="{{url('gestion/contenido/lista/evaluaciones')}}" class="waves-effect waves-dark">
 														<span class="pcoded-mtext">Listar</span>
 													</a>
 												</li>
@@ -302,7 +305,6 @@
     <script type="text/javascript" src="{{asset('js/xml.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('ckeditor4/plugins/ckeditor_wiris/integration/WIRISplugins.js')}}"></script>
     <script type="text/javascript" src="{{asset('ckfinder/ckfinder.js')}}"></script>
-
 	<script type="text/javascript" src="{{asset('ckeditor4/ckeditor.js')}}"></script>
 	
 
@@ -346,6 +348,13 @@
 
 	<script>
 		$('div.alert').not('.alert-important').delay(3000).fadeOut(350);
+	</script>
+	<script src="{{url('https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js')}}"></script>
+	<script src="{{url('https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js')}}"></script>
+	<script>
+		    $(document).ready(function() {
+				$('#examplee').DataTable();
+			} );
 	</script>
         
 </body>

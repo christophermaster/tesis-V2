@@ -1,0 +1,1 @@
+{"result":{"text":"square root of c v c x v x end root"},"status":"ok"}

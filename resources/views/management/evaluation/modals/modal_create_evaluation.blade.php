@@ -1,6 +1,6 @@
 <div class="modal fade bd-example-modal-lg" aria-hidden="true"
 role="dialog" tabindex="-1" id="modal-create-evaluation">
-{!!Form::open(array('url'=>'gestion/contenido/evaluacion/creada','method'=>'POST','autocomplete'=>'off','files'=>'true'))!!}
+{!!Form::open(array('url'=>'gestion/contenido/evaluacion/crear','method'=>'POST','autocomplete'=>'off','files'=>'true'))!!}
 {{Form::token()}}
 	<div class="modal-dialog modal-lg" role="document">
 			<div class="modal-content">
@@ -23,7 +23,7 @@ role="dialog" tabindex="-1" id="modal-create-evaluation">
                                 </select>
                             </div>
                             <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                                <label for="exampleFormControlSelect2" class="milabel">Contenido</label>
+                                <label for="exampleFormControlSelect2" class="milabel">Evaluación</label>
                                 <select  name="tipo" class="form-control miInput" 
                                 data-style="select-with-transition" title="Escuela" data-size="7" required>
                                     @foreach($tipo_evaluacion as $tipo_evaluacion)
@@ -56,13 +56,13 @@ role="dialog" tabindex="-1" id="modal-create-evaluation">
 							<div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
 								<label class="milabel">Numero de pregunta teorica </label>
 								<div class="form-group">
-									<input type="number" name="teorico" class="form-control miInput" value="0" required>
+									<input type="number" name="nTeorico" class="form-control miInput" value="0" required>
 								</div>
 							</div>
 							<div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
 								<label class="milabel">Numero de pregunta Practica </label>
 								<div class="form-group">
-									<input type="number" name="practico" class="form-control miInput" value="0" required>
+									<input type="number" name="nPractico" class="form-control miInput" value="0" required>
 								</div>
 							</div>
 							<div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
