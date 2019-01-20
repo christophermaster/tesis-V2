@@ -1,4 +1,4 @@
-{!! Form::open(array('url' => 'gestion/contenido/administracion/usuarios' , 'method'=> 'Get','autocomplete' =>'on','role' => 'search'))!!}
+{!! Form::open(array('url' => 'gestion/contenido/lista/evaluaciones' , 'method'=> 'Get','autocomplete' =>'on','role' => 'search'))!!}
     <div class="col-xl-12 col-md-12 buscador">
         <div class=" col-xl-4 col-md-4 ">
             <div class="input-group ">

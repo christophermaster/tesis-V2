@@ -45,7 +45,7 @@
                     @endif
                     <h6 class="card-subtitle mb-2 text-muted">{{$tem->tema}}</h6>
                     <p class="card-text">{{$tem->fecha}}</p>
-                    <a href="" class="card-link">ver</a>
+                    <a href="{{url('gestion/contenido/ver/evaluacion/')}}/{{$tem->id}}" class="card-link">ver</a>
                 </div>
             
             </div>

@@ -99,8 +99,7 @@
                 </div>
                 <div class="tab-pane" id="messages7" role="tabpanel">
                     <br>
-                    <p class="m-0">3. This is Photoshop's version of Lorem IpThis is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean mas Cum sociis natoque penatibus et magnis dis.....</p>
-                </div>
+                                    </div>
                 <div class="tab-pane" id="settings7" role="tabpanel">
                     <br>
                    <div class="container">

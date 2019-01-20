@@ -34,13 +34,14 @@ class EvaluationController extends Controller
      */
     public function index(Request $request)
     {
-       $searchText = '';
+      $query= trim($request->get('searchText'));
        $temporaryEvaluation = DB::table('temporaryevaluations as tem')
                     ->select('tem.*')
+                    ->where('tem.tema','LIKE','%'.$query.'%')
                     ->get();
 
         return view("management.evaluation.index",["temporaryEvaluation" => $temporaryEvaluation,
-        'searchText' => $searchText]);
+        'searchText' => $query]);
     }
 
     /**

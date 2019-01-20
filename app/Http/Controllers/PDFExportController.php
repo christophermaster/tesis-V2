@@ -223,4 +223,33 @@ class PDFExportController extends Controller
             DB::rollback();
         }
     }
+    public function ver($id)
+    {  
+        $evaluation = TemporaryEvaluation::find($id);
+        
+        $exerciseTemporaryEvaluation = ExerciseTemporaryEvaluation::where('id_temporal_evaluation',$evaluation->id)->get();
+        foreach ($exerciseTemporaryEvaluation as $todo) {
+            $arrayTodos[] = $todo->id_ejercicio;
+        }
+
+        if($evaluation->id_evaluacion !== 3){
+            $todos = DB::table('exercises')->whereIn('id', $arrayTodos)->get();
+            $teorico = [];
+            $practico = [];
+        }else{
+            $todos = [];
+            $teorico = [];
+            $practico = [];
+            $teorico = DB::table('exercises')->whereIn('id', $arrayTodos)
+            ->where('id_tipo',1)
+            ->get();
+            $practico = DB::table('exercises')->whereIn('id', $arrayTodos)
+            ->where('id_tipo',2)
+            ->get();
+        }
+      
+        return view("management.evaluation.resultado",["todos" => $todos, "teorico" => $teorico,
+           "practico"=>$practico,'ver'=> $evaluation->id_evaluacion ]);
+    
+    }
 }

@@ -95,7 +95,7 @@
 											<i class="feather icon-chevron-down"></i>
 										</div>
 										<ul class="show-notification profile-notification dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
-											<li>
+										<!--	<li>
 												<a href="#!">
 													<i class="feather icon-settings"></i> Configuración
 
@@ -106,12 +106,17 @@
 													<i class="feather icon-user"></i> Perfil
 
 												</a>
-											</li>
-											<li>
-												<a href="auth-sign-in-social.html">
-													<i class="feather icon-log-out"></i> Salir
+											</li>-->
 
+											<li>
+												<a href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                            document.getElementById('logout-form').submit();">
+													<i class="feather icon-log-out"></i> Salir
 												</a>
+												<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+													@csrf
+												</form>
 											</li>
 										</ul>
 									</div>
@@ -197,6 +202,7 @@
 												</li>
 											</ul>
 										</li>
+										<!--
 										<li class=" ">
 											<a href="form-picker.html" class="waves-effect waves-dark">
 												<span class="pcoded-micon">
@@ -204,7 +210,7 @@
 												</span>
 												<span class="pcoded-mtext">Histórico</span>
 											</a>
-										</li>
+										</li>-->
 		
 									</ul>
 									<div class="pcoded-navigation-label">Subir</div>
@@ -219,28 +225,31 @@
 											</a>
 										</li>
 									</ul>
-									<div class="pcoded-navigation-label">Administraccion</div>
-									<ul class="pcoded-item pcoded-left-item">
-										<li class=" ">
-											<a href="{{url('gestion/contenido/administracion/usuarios')}}" class="waves-effect waves-dark">
-												<span class="pcoded-micon">
-													<i class="icon-people"></i>
-												</span>
-												<span class="pcoded-mtext">Usuarios</span>
-											
-											</a>
-										</li>
-										<li class=" ">
-											<a href="{{url('gestion/contenido/administracion/tema')}}" class="waves-effect waves-dark">
-												<span class="pcoded-micon">
-													<i class="icon-notebook"></i>
-												</span>
-												<span class="pcoded-mtext">Catedra</span>
-											
-											</a>
-										</li>
-
-									</ul>
+									@if (Auth::user()->id_cargo == 1 || Auth::user()->id_cargo == 2)
+										<div class="pcoded-navigation-label">Administraccion</div>
+										<ul class="pcoded-item pcoded-left-item">
+											<li class=" ">
+												<a href="{{url('gestion/contenido/administracion/usuarios')}}" class="waves-effect waves-dark">
+													<span class="pcoded-micon">
+														<i class="icon-people"></i>
+													</span>
+													<span class="pcoded-mtext">Usuarios</span>
+												
+												</a>
+											</li>
+											@if (Auth::user()->id_cargo == 1)
+											<li class=" ">
+												<a href="{{url('gestion/contenido/administracion/tema')}}" class="waves-effect waves-dark">
+													<span class="pcoded-micon">
+														<i class="icon-notebook"></i>
+													</span>
+													<span class="pcoded-mtext">Catedra</span>
+												
+												</a>
+											</li>
+											@endif
+										</ul>
+									@endif
 								</div>
 							</div>
 						</nav>
